@@ -15,31 +15,13 @@ class ListsController < ApplicationController
 
   def show
     @activities = Activity.all
+    @activity = Activity.new
     @list = List.find(params[:id])
-  end
 
-  def addactivity
-    @list = List.find(params[:id])
-    @listactivity = Listactivity.new
-    @listactivity.list_id = @list.id
-    @listactivity.activity_id = params[:activity_id]
-    if @listactivity.save
-      redirect_to edit_activity_path(id: @listactivity.id)
-    else
-      redirect_to list_path
-    end
-  end
+    @yes_activities = Listactivity.where("status = ? AND list_id = ?","yes", params[:id])
+    @no_activities = Listactivity.where("status = ? AND list_id = ?","no", params[:id])
+    @maybe_activities = Listactivity.where("status = ? AND list_id = ?","maybe", params[:id])
+    @nil_activities = Activity.where(status: nil)
 
-  def updateactivity
-    @listactivity = Listactivity.find(params[:id])
-    if @listactivity.update(params.require(:listactivity).permit(:status, :notes))
-      redirect_to list_path(id: @listactivity.list_id)
-    else
-      render :edit
-    end
-    raise params.inspect
-  end
-
-  def deleteactivity
   end
 end

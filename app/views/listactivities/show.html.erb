@@ -1,0 +1,22 @@
+<table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Status</th>
+        <th>Notes + Thoughts</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><%= @listactivity.activity.name %></td>
+          <td><%= @listactivity.status %></td>
+          <td><%= @listactivity.notes %></td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<%= link_to "Edit", edit_activity_path %>
+<%= button_to "Delete", delete_activity_path, method: :delete %>
+<%= link_to "Back to List", list_path(@listactivity.list.id) %>
