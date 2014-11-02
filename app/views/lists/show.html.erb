@@ -1,0 +1,16 @@
+Title <%= @list.name %>
+
+<table>
+  <thead>
+    <th>Yes</th>
+    <th>No</th>
+    <th>Maybe</th>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+Select Activity:
+<% @activities.each do |activity| %>
+  <%= button_to activity.name, add_activity_path(@list.id, activity_id: activity.id), method: :post %>
+<% end %>

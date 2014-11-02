@@ -1,0 +1,10 @@
+<%= @listactivity.activity.name %>
+
+<%= form_for @listactivity,
+                :url => update_activity_path(@listactivity,
+                :id => params[:id]),
+                :html => {method: :patch} do |f| %>
+  <%= f.select(:status, @levels.map {|value| [value, value]}) %>
+  <%= f.text_area :notes, placeholder: "Additional Thoughts + Ideas" %>
+  <%= f.submit %>
+<% end %>

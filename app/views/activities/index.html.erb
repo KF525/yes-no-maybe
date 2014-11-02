@@ -1,0 +1,12 @@
+Activities:
+
+<% @activities.each do |activity| %>
+  <%= activity.name %>
+<% end %>
+
+Create New Activity
+
+<%= form_for @activity do |f| %>
+  <%= f.text_field :name, placeholder: "name" %>
+  <%= f.submit %>
+<% end %>
