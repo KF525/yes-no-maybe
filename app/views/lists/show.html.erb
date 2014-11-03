@@ -1,4 +1,4 @@
-Title <%= @list.name %>
+<%= @list.name %>: Yes, No, Maybe List
 
 <table>
   <thead>
@@ -7,10 +7,32 @@ Title <%= @list.name %>
     <th>Maybe</th>
   </thead>
   <tbody>
+    <th>
+      <% @yes_activities.each do |activity| %>
+        <%=link_to activity.name, listactivity_path(id: activity.id) %><br>
+      <% end %>
+    </th>
+    <th>
+      <% @no_activities.each do |activity| %>
+        <%=link_to activity.name, listactivity_path(id: activity.id) %><br>
+      <% end %>
+    </th>
+    <th>
+      <% @maybe_activities.each do |activity| %>
+        <%=link_to activity.name, listactivity_path(id: activity.id) %><br>
+      <% end %>
+    </th>
   </tbody>
 </table>
 
 Select Activity:
 <% @activities.each do |activity| %>
   <%= button_to activity.name, add_activity_path(@list.id, activity_id: activity.id), method: :post %>
+<% end %>
+
+Create Activity:
+<%= form_for @activity do |f| %>
+  <%= f.text_field :name, placeholder: "name" %>
+  <%= hidden_field_tag(:list_id, @list.id) %>
+  <%= f.submit %>
 <% end %>

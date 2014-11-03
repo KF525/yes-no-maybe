@@ -1,18 +1,19 @@
 Rails.application.routes.draw do
 
-  get "activities",             to: "activities#index",           as: :activities
-  get "activities/new",         to: "activities#new",             as: :new_activity
-  post "activities",            to: "activities#create"
+  get "activities",                 to: "activities#index",                   as: :activities
+  get "activities/new",             to: "activities#new",                     as: :new_activity
+  post "activities",                to: "activities#create"
 
-  get "lists",                  to: "lists#index",                as: :lists
-  post "lists",                 to: "lists#create",               as: :new_list
-  get "lists/:id",              to: "lists#show",                 as: :list
-  delete "lists/:id",           to: "lists#destroy",              as: :delete_list
-  post "lists/:id/activity",    to: "lists#addactivity",          as: :add_activity
-  patch "lists/:id/activity",   to: "lists#updateactivity",       as: :update_activity
-  delete "lists/:id/activity",  to: "lists#destroyactivity",      as: :delete_activity
+  get "lists",                      to: "lists#index",                        as: :lists
+  post "lists",                     to: "lists#create",                       as: :new_list
+  get "lists/:id",                  to: "lists#show",                         as: :list
+  delete "lists/:id",               to: "lists#destroy",                      as: :delete_list
 
-  get "listactivities/edit",    to: "listactivities#edit",        as: :edit_activity
+  post "lists/:id/activity",        to: "listactivities#addactivity",         as: :add_activity
+  patch "lists/:id/activity",       to: "listactivities#updateactivity",      as: :update_activity
+  delete "lists/:id/activity",      to: "listactivities#destroyactivity",     as: :delete_activity
+  get "listactivities/:id/edit",    to: "listactivities#edit",                as: :edit_activity
+  get "listactivities/:id/show",    to: "listactivities#show",                as: :listactivity
 
   root "home#index"
   # The priority is based upon order of creation: first created -> highest priority.
