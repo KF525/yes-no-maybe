@@ -22,6 +22,6 @@ class ListsController < ApplicationController
     @no_activities = Listactivity.where("status = ? AND list_id = ?","no", params[:id])
     @maybe_activities = Listactivity.where("status = ? AND list_id = ?","maybe", params[:id])
     @nil_activities = Activity.where(status: nil)
-
+    
   end
 end
